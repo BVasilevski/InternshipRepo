@@ -1,29 +1,51 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { QUOTES } from '../quotes';
 import { Quote } from '../quote';
 import { QuotesService } from '../quotes.service';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-quote',
-  imports: [],
   templateUrl: './quote.component.html',
-  styleUrl: './quote.component.css'
+  styleUrl: './quote.component.css',
+  animations: [
+    trigger('fadeInOut', [
+      state('hidden', style({ opacity: 0, transform: 'translateY(-10px)' })),
+      state('visible', style({ opacity: 1, transform: 'translateY(0)' })),
+      transition('hidden => visible', animate('1s ease-in')),
+      transition('visible => hidden', animate('0.5s ease-out'))
+    ])
+  ]
 })
 export class QuoteComponent implements OnInit {
   quotes: Quote[] = [];
   quote: Quote | undefined;
   service = inject(QuotesService);
+  color = "";
+  animationState = "hidden";
 
   ngOnInit(): void {
     this.service.getRandomQuote().subscribe((quotes) => {
       this.quotes = quotes;
-      const quoteId = Math.floor(Math.random() * this.quotes.length);
-      this.quote = this.quotes[quoteId];
+      this.fetchRandomQuote();
     });
   }
 
-  newQuote(): void {
-    const quoteId = Math.floor(Math.random() * QUOTES.length)
-    this.quote = this.quotes[quoteId];
+  fetchRandomQuote(): void {
+    this.animationState = "hidden";
+    setTimeout(() => {
+      if (this.quotes.length > 0) {
+        const quoteId = Math.floor(Math.random() * this.quotes.length);
+        this.quote = this.quotes[quoteId];
+        this.color = this.getRandomColor();
+        this.animationState = "visible";
+      }
+    }, 200);
+  }
+
+  getRandomColor(): string {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`;
   }
 }
