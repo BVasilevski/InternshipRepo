@@ -1,0 +1,15 @@
+@for (show of shows; track show.imdbID) {
+<a routerLink="/show-details/{{ show.imdbID }}">
+    <div class="card">
+        <div class="card-left">
+            <img [src]="show.Poster" alt="Show Poster" class="card-img">
+        </div>
+        <div class="card-right">
+            <h3 class="card-title">{{ show.Title }}</h3>
+            <p class="card-plot">{{ show.Plot }}</p>
+            <p>{{ show.Genre }}</p>
+        </div>
+    </div>
+</a>
+}
+    

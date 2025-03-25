@@ -1,0 +1,68 @@
+.show-details-container {
+    margin: 20px;
+}
+
+.show-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.show-info-left {
+    flex: 1;
+    max-width: 250px;
+}
+
+.show-info-left .show-poster {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.show-info-left .show-title {
+    font-size: 2em;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.show-info-right {
+    flex: 2;
+    padding-left: 20px;
+}
+
+.show-info-right p {
+    margin-bottom: 10px;
+}
+
+.show-actors-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.show-actors-left {
+    flex: 1;
+}
+
+.show-actors-right {
+    flex: 2;
+    padding-left: 20px;
+}
+
+.show-actors-left h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.show-actors-left ul {
+    list-style: none;
+    padding: 0;
+}
+
+.show-actors-left ul li {
+    margin-bottom: 5px;
+}
+
+.show-actors-right p {
+    font-style: italic;
+    color: #888;
+}

@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Quote } from '../quote';
 import { QuotesService } from '../quotes.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { switchMap, timer } from 'rxjs';
 
 @Component({
   selector: 'app-quote',
@@ -24,22 +25,29 @@ export class QuoteComponent implements OnInit {
   animationState = "hidden";
 
   ngOnInit(): void {
-    this.service.getRandomQuote().subscribe((quotes) => {
-      this.quotes = quotes;
-      this.fetchRandomQuote();
-    });
+    this.service.getRandomQuote()
+      .pipe(
+        switchMap((quotes) => {
+          this.quotes = quotes;
+          this.animationState = "hidden";
+          return timer(200);
+        })
+      )
+      .subscribe(() => this.showRandomQuote());
   }
 
-  fetchRandomQuote(): void {
+  newQuote(): void {
     this.animationState = "hidden";
-    setTimeout(() => {
-      if (this.quotes.length > 0) {
-        const quoteId = Math.floor(Math.random() * this.quotes.length);
-        this.quote = this.quotes[quoteId];
-        this.color = this.getRandomColor();
-        this.animationState = "visible";
-      }
-    }, 200);
+    timer(200).subscribe(() => this.showRandomQuote());
+  }
+
+  showRandomQuote(): void {
+    if (this.quotes.length > 0) {
+      const quoteId = Math.floor(Math.random() * this.quotes.length);
+      this.quote = this.quotes[quoteId];
+      this.color = this.getRandomColor();
+      this.animationState = "visible";
+    }
   }
 
   getRandomColor(): string {

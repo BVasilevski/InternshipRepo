@@ -1,0 +1,29 @@
+<div class="show-details-container">
+    <div class="show-info">
+      <div class="show-info-left">
+        <img [src]="show?.Poster" alt="Show Poster" class="show-poster">
+        <h2 class="show-title">{{ show?.Title }}</h2>
+      </div>
+      <div class="show-info-right">
+        <p><strong>Plot:</strong> {{ show?.Plot }}</p>
+        <p><strong>Language:</strong> {{ show?.Language }}</p>
+        <p><strong>Genre:</strong> {{ show?.Genre }}</p>
+        <!-- <p><strong>Status:</strong> {{ show?.Status }}</p> -->
+        <p><strong>Premiered:</strong> {{ show?.Year }}</p>
+        <!-- <p><strong>Official Site:</strong> <a [href]="show?.Website" target="_blank">{{ show?.Website }}</a></p> -->
+      </div>
+    </div>
+  
+    <!-- Bottom container with actors and placeholder text -->
+    <div class="show-actors-container">
+      <div class="show-actors-left">
+        <h3>Actors</h3>
+        <ul>
+          <li *ngFor="let actor of show?.Actors?.split(',')">{{ actor }}</li>
+        </ul>
+      </div>
+      <div class="show-actors-right">
+        <p>Placeholder text for additional information about the show or related content.</p>
+      </div>
+    </div>
+  </div>

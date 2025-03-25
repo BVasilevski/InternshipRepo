@@ -1,0 +1,25 @@
+form {
+    width: 100%;
+    margin: 0 20px;
+    padding: 10px 0;
+    box-sizing: border-box;
+}
+
+label,
+input {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+}
+
+input {
+    padding: 10px;
+    font-size: 16px;
+}
+
+button {
+    width: auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
