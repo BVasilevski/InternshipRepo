@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Show } from '../show';
+import { Show } from '../models/show';
 import { FormControl, FormControlDirective, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ShowComponent } from '../show/show.component';
 import { RouterLink, RouterOutlet } from '@angular/router';
@@ -8,7 +8,7 @@ import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-search',
-  imports: [ReactiveFormsModule, ShowComponent, RouterLink],
+  imports: [ReactiveFormsModule, ShowComponent],
   templateUrl: './search.component.html',
   styleUrl: './search.component.css'
 })

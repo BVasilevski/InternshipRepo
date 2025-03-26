@@ -1,5 +1,5 @@
 import { Component, inject, Input } from '@angular/core';
-import { Show } from '../show';
+import { Show } from '../models/show';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({

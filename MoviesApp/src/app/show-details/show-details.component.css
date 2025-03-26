@@ -1,11 +1,17 @@
 .show-details-container {
-    margin: 20px;
+    margin-left: 200px;
+    margin-right: 200px;
+    border: 1px solid gray;
+    padding: 10px;
 }
 
 .show-info {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 50px;
 }
 
 .show-info-left {
@@ -37,15 +43,21 @@
 .show-actors-container {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
+    gap: 100px;
 }
 
 .show-actors-left {
     flex: 1;
+    min-width: 200px;
+    margin-left: 50px;
 }
 
 .show-actors-right {
     flex: 2;
-    padding-left: 20px;
+    padding-left: 50px;
+    margin-left: 600px;
+    text-align: left;
 }
 
 .show-actors-left h3 {
@@ -65,4 +77,15 @@
 .show-actors-right p {
     font-style: italic;
     color: #888;
+}
+
+.app-link {
+    margin-left: 200px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: xx-large;
+}
+
+li {
+    font-size: large;
 }

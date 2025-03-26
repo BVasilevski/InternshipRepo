@@ -1,10 +1,14 @@
 import { Routes } from '@angular/router';
 import { ShowComponent } from './show/show.component';
 import { ShowDetailsComponent } from './show-details/show-details.component';
-import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 
 export const routes: Routes = [
+    {
+        path: '',
+        redirectTo: '/search',
+        pathMatch: 'full'
+    },
     {
         path: 'search',
         component: SearchComponent

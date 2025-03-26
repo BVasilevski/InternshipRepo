@@ -1,3 +1,5 @@
+import { ShowSeason } from "./show.season";
+
 export interface Show {
     Title: string;
     Year: string;
@@ -21,5 +23,6 @@ export interface Show {
     Type: string;
     totalSeasons?: string;
     Response: string;
+    Seasons: ShowSeason[];
   }
   
