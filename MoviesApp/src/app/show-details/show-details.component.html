@@ -17,7 +17,7 @@
 
   <div class="show-actors-container">
     <div class="show-actors-left">
-      <h3>Actors</h3>
+      <h3>Cast</h3>
       <ul>
         @for (actor of show?.Actors?.split(","); track $index){
         <li>{{actor}}</li>
@@ -28,14 +28,16 @@
     <div class="show-actors-right">
       <h3>Episodes</h3>
       <ul>
-        <li *ngFor="let season of show?.Seasons">
-          <strong>Season {{ season.Season }}:</strong>
-          <ul>
-            <li *ngFor="let episode of season.Episodes">
-              {{`S${season.Season}E${episode.Episode} ${episode.Title}`}}
-            </li>
-          </ul>
-        </li>
+        @for (season of show?.Seasons; track $index) {
+        <strong>Season {{ season.Season}} </strong>
+        <ul>
+          @for (episode of season.Episodes; track $index) {
+          <li>
+            {{`S${season.Season}E${episode.Episode} ${episode.Title}`}}
+          </li>
+          }
+        </ul>
+        }
       </ul>
     </div>
     }

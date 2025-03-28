@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Quote } from '../quote';
 import { QuotesService } from '../quotes.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { switchMap, timer } from 'rxjs';
+import { mergeMap, timer } from 'rxjs';
 
 @Component({
   selector: 'app-quote',
@@ -27,7 +27,7 @@ export class QuoteComponent implements OnInit {
   ngOnInit(): void {
     this.service.getRandomQuote()
       .pipe(
-        switchMap((quotes) => {
+        mergeMap((quotes) => {
           this.quotes = quotes;
           this.animationState = "hidden";
           return timer(200);

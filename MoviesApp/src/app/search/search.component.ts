@@ -4,7 +4,7 @@ import { FormControl, FormControlDirective, FormGroup, ReactiveFormsModule } fro
 import { ShowComponent } from '../show/show.component';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { ShowService } from '../show.service';
-import { forkJoin } from 'rxjs';
+import { forkJoin, mergeMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-search',
@@ -21,14 +21,11 @@ export class SearchComponent {
 
   onFormSubmit() {
     const titleQuery = this.form.value.title;
-    this.showService.fetchAllShowsByTitleContaining(titleQuery).subscribe((shows) => {
-      const showRequests = shows.map((show) =>
-        this.showService.fetchShowById(show.imdbID)
-      );
-      forkJoin(showRequests).subscribe((detailedShows) => {
-        this.shows = detailedShows;
-        console.log(this.shows);
-      });
-    });
+    // 2 api calls because with the first fetch we don't fetch each show's actors, seasons etc
+    this.showService.fetchAllShowsByTitleContaining(titleQuery).pipe(
+      mergeMap((shows) => forkJoin(shows.map((show) => this.showService.fetchShowById(show.imdbID)))),
+    ).subscribe((finalShows) => {
+      this.shows = finalShows;
+    })
   }
 }

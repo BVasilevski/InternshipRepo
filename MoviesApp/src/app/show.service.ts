@@ -29,7 +29,6 @@ export class ShowService {
             const fetchUrl = `${this.baseUrl}&i=${id}&Season=${i}`;
             requests.push(this.httpClient.get<ShowSeason>(fetchUrl));
         }
-
         return forkJoin(requests); 
     }
 }

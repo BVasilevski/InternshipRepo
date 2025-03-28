@@ -1,9 +1,3 @@
 import { Routes } from '@angular/router';
-import { QuoteComponent } from './quote/quote.component';
 
-export const routes: Routes = [
-    {
-        path: "quotes",
-        component: QuoteComponent
-    }
-];
+export const routes: Routes = [];

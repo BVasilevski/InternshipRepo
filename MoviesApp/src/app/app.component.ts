@@ -1,10 +1,5 @@
-import { Component, inject } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { ShowService } from './show.service';
-import { Show } from './models/show';
-import { forkJoin } from 'rxjs';
-import { RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
-import { SearchComponent } from './search/search.component';
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
