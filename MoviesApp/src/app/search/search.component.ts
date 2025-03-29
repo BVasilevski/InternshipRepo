@@ -1,10 +1,9 @@
-import { Component, inject } from '@angular/core';
-import { Show } from '../models/show';
-import { FormControl, FormControlDirective, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { ShowComponent } from '../show/show.component';
-import { RouterLink, RouterOutlet } from '@angular/router';
-import { ShowService } from '../show.service';
-import { forkJoin, mergeMap, tap } from 'rxjs';
+import {Component, inject} from '@angular/core';
+import {Show} from '../models/show';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {ShowComponent} from '../show/show.component';
+import {ShowService} from '../show.service';
+import {forkJoin, mergeMap} from 'rxjs';
 
 @Component({
   selector: 'app-search',

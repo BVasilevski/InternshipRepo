@@ -1,3 +1,7 @@
+p {
+  font-size: large;
+}
+
 .show-details-container {
     margin-left: 200px;
     margin-right: 200px;
@@ -45,19 +49,16 @@
     justify-content: space-between;
     align-items: flex-start;
     gap: 100px;
+    flex: 2;
 }
 
 .show-actors-left {
-    flex: 1;
     min-width: 200px;
     margin-left: 50px;
 }
 
 .show-actors-right {
-    flex: 2;
-    padding-left: 50px;
-    margin-left: 600px;
-    text-align: left;
+    margin-right: 1.5rem;
 }
 
 .show-actors-left h3 {

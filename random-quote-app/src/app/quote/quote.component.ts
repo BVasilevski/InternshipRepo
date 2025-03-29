@@ -36,11 +36,6 @@ export class QuoteComponent implements OnInit {
       .subscribe(() => this.showRandomQuote());
   }
 
-  newQuote(): void {
-    this.animationState = "hidden";
-    timer(200).subscribe(() => this.showRandomQuote());
-  }
-
   showRandomQuote(): void {
     if (this.quotes.length > 0) {
       const quoteId = Math.floor(Math.random() * this.quotes.length);
