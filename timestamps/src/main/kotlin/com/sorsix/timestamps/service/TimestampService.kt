@@ -2,9 +2,7 @@ package com.sorsix.timestamps.service
 
 import com.sorsix.timestamps.model.Timestamp
 import org.springframework.stereotype.Service
-import java.time.Instant
-import java.time.LocalDate
-import java.time.ZoneId
+import java.time.*
 import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeParseException
 import java.util.Locale
@@ -15,7 +13,7 @@ class TimestampService(
     val locale: Locale = Locale.ENGLISH,
 ) {
 
-    fun createTimestampFromMillis(date: String): Timestamp {
+    fun createTimestampFromUnix(date: String): Timestamp {
         val millis = date.toLong()
         val instant = Instant.ofEpochMilli(millis)
         val formattedUtc = DateTimeFormatter.RFC_1123_DATE_TIME
@@ -40,12 +38,20 @@ class TimestampService(
         return input.toLongOrNull() != null || regex.matches(input)
     }
 
-    fun createTimestamp(input: String): Timestamp {
+    fun createTimestamp(input: String? = null): Timestamp {
+        if (input.isNullOrBlank() || input.isEmpty()) {
+            val currentDate = ZonedDateTime.now(ZoneOffset.UTC)
+                .format(DateTimeFormatter.RFC_1123_DATE_TIME)
+            val timestamp = System.currentTimeMillis()
+            return Timestamp(timestamp, currentDate)
+        }
+
         if (!isValid(input)) {
             throw RuntimeException("Invalid date")
         }
+
         return try {
-            createTimestampFromMillis(input)
+            createTimestampFromUnix(input)
         } catch (e: NumberFormatException) {
             try {
                 createTimestampFromDate(input)

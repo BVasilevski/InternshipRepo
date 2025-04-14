@@ -12,6 +12,11 @@ import java.time.format.DateTimeParseException
 @RestController
 @RequestMapping("/api")
 class TimestampController(val timestampService: TimestampService) {
+    @GetMapping("", "/")
+    fun getCurrentTimestamp(): ResponseEntity<Any> {
+        val timestamp = timestampService.createTimestamp()
+        return ResponseEntity.ok().body(timestamp)
+    }
 
     @GetMapping("{date}")
     fun getTimestamp(@PathVariable("date") date: String): ResponseEntity<Any> {
